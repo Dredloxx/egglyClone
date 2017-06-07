@@ -28,6 +28,15 @@ background-color: #fcfdff !important;
   color:#8d8d8e;
 }
 
+.mimic{
+      color: #5bc0de !important;
+      font-size: 30px;
+      text-decoration: none;
+      position: relative;
+      display: block;
+      padding: 10px 15px;
+}
+
 /*Eggly Style Sheet */
 html,
 body {

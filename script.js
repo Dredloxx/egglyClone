@@ -38,6 +38,50 @@ angular.module('myApp',[])
          $scope.toggleCustom = function() {
              $scope.custom = $scope.custom === false ? true: false;
          };
+/*
+/ Creating and Editing States
+*/
 
+$scope.isCreating = false
+$scope.isEditing = false
+
+function startCreating() {
+  $scope.isCreating = true;
+  $scope.isEditing = false;
+}
+
+function cancelCreating() {
+  $scope.isCreating = false;
+}
+
+function startEditing() {
+  $scope.isCreating = false;
+  $scope.isEditing = true;
+}
+
+function cancelEditing(){
+  $scope.isEditing = false;
+}
+
+function shouldShowCreate(){
+  if($scope.currentCategory != null && !$scope.isEditing){
+    return true
+  }
+  return false
+}
+
+function shouldShowEditing(){
+  if($scope.currentCategory != null && !$scope.isCreating){
+    return true
+  }
+  return false
+}
+
+$scope.startCreating = startCreating;
+$scope.cancelCreating = cancelCreating;
+$scope.startEditing = startEditing;
+$scope.cancelEditing = cancelEditing;
+$scope.shouldShowEditing = shouldShowEditing;
+$scope.shouldShowCreate = shouldShowCreate;
 
 }]);

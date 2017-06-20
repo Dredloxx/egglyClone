@@ -20,6 +20,9 @@ angular.module('myApp',[])
 	function setCurrentCategory(category)
 	{
 		$scope.currentCategory = category;
+
+    cancelCreating();
+    cancelEditing();
 	}
 
   function isCurrentCategory(category)
@@ -64,17 +67,12 @@ function cancelEditing(){
 }
 
 function shouldShowCreate(){
-  if($scope.currentCategory != null && !$scope.isEditing){
-    return true
-  }
-  return false
+   return $scope.currentCategory && !$scope.isEditing
 }
 
 function shouldShowEditing(){
-  if($scope.currentCategory != null && !$scope.isCreating){
-    return true
-  }
-  return false
+  return $scope.currentCategory != null && !$scope.isCreating
+
 }
 
 $scope.startCreating = startCreating;

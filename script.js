@@ -10,9 +10,9 @@ angular.module('myApp',[])
 
   $scope.bookmarks = [
     {"id":0,"title":"AngularJS","url":"http://angularjs.org","category":"Development"},
-		{"id":0,"title":"Design Stuff","url":"http://angularjs.org","category":"Design"},
-		{"id":0,"title":"Exercise Stuff","url":"http://angularjs.org","category":"Exercise"},
-		{"id":0,"title":"Memes","url":"http://angularjs.org","category":"Humor"}
+		{"id":1,"title":"Design Stuff","url":"http://angularjs.org","category":"Design"},
+		{"id":2,"title":"Exercise Stuff","url":"http://angularjs.org","category":"Exercise"},
+		{"id":3,"title":"Memes","url":"http://angularjs.org","category":"Humor"}
   ];
 
 	$scope.currentCategory=null;
@@ -40,13 +40,13 @@ angular.module('myApp',[])
          $scope.custom = true;
          $scope.toggleCustom = function() {
              $scope.custom = $scope.custom === false ? true: false;
-         };
+  };
 /*
 / Creating and Editing States
 */
 
-$scope.isCreating = false
-$scope.isEditing = false
+$scope.isCreating = false;
+$scope.isEditing = false;
 
 function startCreating() {
   $scope.isCreating = true;
@@ -71,7 +71,7 @@ function shouldShowCreate(){
 }
 
 function shouldShowEditing(){
-  return $scope.currentCategory != null && !$scope.isCreating
+  return $scope.currentCategory && !$scope.isCreating
 
 }
 

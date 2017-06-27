@@ -41,6 +41,32 @@ angular.module('myApp',[])
          $scope.toggleCustom = function() {
              $scope.custom = $scope.custom === false ? true: false;
   };
+
+
+
+
+/*
+  Create Update Delete
+*/
+function resetCreateForm()
+{
+  $scope.newBookmark={
+      title:'',
+      url:'',
+      category:$scope.currentCategory
+  }
+}
+
+function createBookmark(bookmark){
+  bookmark.id = $scope.bookmarks.length + 1;
+  $scope.bookmarks.push(bookmark);
+
+  resetCreateForm();
+}
+
+$scope.createBookmark = createBookmark;
+
+
 /*
 / Creating and Editing States
 */
@@ -51,6 +77,7 @@ $scope.isEditing = false;
 function startCreating() {
   $scope.isCreating = true;
   $scope.isEditing = false;
+  resetCreateForm();
 }
 
 function cancelCreating() {
@@ -67,12 +94,11 @@ function cancelEditing(){
 }
 
 function shouldShowCreate(){
-   return $scope.currentCategory && !$scope.isEditing
+   return $scope.currentCategory && !$scope.isEditing;
 }
 
 function shouldShowEditing(){
-  return $scope.currentCategory && !$scope.isCreating
-
+  return $scope.isEditing && !$scope.isCreating;
 }
 
 $scope.startCreating = startCreating;
